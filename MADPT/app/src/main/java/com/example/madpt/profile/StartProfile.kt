@@ -2,8 +2,6 @@ package com.example.madpt.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.ActivityStartProfileBinding
@@ -17,29 +15,19 @@ class StartProfile : AppCompatActivity() {
         binding = ActivityStartProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.statureEdit.setTextIsSelectable(true)
-        binding.statureEdit.showSoftInputOnFocus = false
-        binding.statureEdit.setOnTouchListener { _: View, event:MotionEvent ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    val bottomSheet = NumberPicker()
-                    bottomSheet.show(supportFragmentManager, NumberPicker.TAG)
-                }
-            }
-            true
-        }
+        binding.IntegerStature.value=160
+        binding.IntegerStature.maxValue=250
+        binding.IntegerStature.minValue=0
+        binding.DecimalStature.value=0
+        binding.DecimalStature.maxValue=9
+        binding.DecimalStature.minValue=0
 
-        binding.weightEdit.setTextIsSelectable(true)
-        binding.weightEdit.showSoftInputOnFocus = false
-        binding.weightEdit.setOnTouchListener { _: View, event:MotionEvent ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    val bottomSheet = NumberPicker()
-                    bottomSheet.show(supportFragmentManager, NumberPicker.TAG)
-                }
-            }
-            true
-        }
+        binding.IntegerWeight.value=50
+        binding.IntegerWeight.maxValue=200
+        binding.IntegerWeight.minValue=0
+        binding.DecimalWeight.value=0
+        binding.DecimalWeight.maxValue=99
+        binding.DecimalWeight.minValue=0
 
         binding.checkButton.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
